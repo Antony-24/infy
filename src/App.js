@@ -3,7 +3,7 @@ import { useEffect , useState} from 'react';
 
 function App() {
 
-  const [news,setNews] = useState([])
+  const [data,setData] = useState([])
 
 useEffect(()=>{
 fetchweather();
@@ -12,19 +12,19 @@ fetchweather();
 
 const  fetchweather = async ()=>{
 
-  const response = await axios.get('https://newsapi.org/v2/everything?q=tesla&from=2024-12-08&sortBy=publishedAt&apiKey=6cde0e1305da46d19f6443ca5f509255');
+  const response = await axios.get('https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY');
   const articles = response.data.articles;
   console.log(articles,"news");
-  setNews(articles);
+  setData(articles);
 }
 
   return (
     <div className='text-[24px] font-bold text-gray-600 text-center'>
-      Latest News
+      NASA Data
     <div>
 
       <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5'>
-      {news.length > 0 ? (
+      {/* {news.length > 0 ? (
           news.map((article, index) => (
 
             
@@ -53,7 +53,7 @@ const  fetchweather = async ()=>{
           ))
         ) : (
           <p className="text-center text-gray-500">Loading news...</p>
-        )}
+        )} */}
       </div>
    
     </div>
